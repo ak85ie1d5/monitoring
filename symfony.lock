@@ -235,6 +235,30 @@
     "symfony/stopwatch": {
         "version": "v4.3.11"
     },
+    "symfony/translation-contracts": {
+        "version": "v1.1.10"
+    },
+    "symfony/twig-bridge": {
+        "version": "v4.3.11"
+    },
+    "symfony/twig-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "1da1987340b5ba64b16383906d678b989e3d096e"
+        },
+        "files": [
+            "config/packages/test/twig.yaml",
+            "config/packages/twig.yaml",
+            "config/routes/dev/twig.yaml",
+            "templates/base.html.twig"
+        ]
+    },
+    "symfony/twig-pack": {
+        "version": "v1.0.1"
+    },
     "symfony/var-exporter": {
         "version": "v4.3.11"
     },
@@ -249,6 +273,12 @@
     },
     "symfony/yaml": {
         "version": "v4.3.11"
+    },
+    "twig/extra-bundle": {
+        "version": "v3.1.1"
+    },
+    "twig/twig": {
+        "version": "v2.14.1"
     },
     "zendframework/zend-code": {
         "version": "3.4.1"
