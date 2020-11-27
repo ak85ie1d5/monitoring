@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  ven. 27 nov. 2020 à 21:30
+-- Généré le :  ven. 27 nov. 2020 à 21:50
 -- Version du serveur :  10.3.25-MariaDB-0+deb10u1
 -- Version de PHP :  7.3.19-1~deb10u1
 
@@ -80,6 +80,16 @@ CREATE TABLE `website` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Déchargement des données de la table `website`
+--
+
+INSERT INTO `website` (`id`, `url`, `name`) VALUES
+(1, 'https://www.prevor.com', 'Prevor'),
+(2, 'https://environnement.prevor.com/', 'Env Prevor'),
+(3, 'https://www.dressilk.com', 'Dressilk'),
+(4, 'https://www.toto.tata/', 'Toto');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -128,7 +138,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT pour la table `website`
 --
 ALTER TABLE `website`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
