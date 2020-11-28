@@ -11,20 +11,17 @@
                     <tr>
                         <th scope="col">URL</th>
                         <th scope="col">Code HTTP</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">
-                            {{ website.url }}
-                        </th>
-                        <td>200</td>
-                        <td>
-                            <i class="fas fa-check-circle"></i>
-                        </td>
-                    </tr>
-
+                    {% for status in website.statuses %}
+                        <tr>
+                            <th scope="row">{{ website.url }}</th>
+                            <td>{{ status.code }}</td>
+                            <td>{{ status.reportedAt | date('d/m/Y H:i:s') }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
