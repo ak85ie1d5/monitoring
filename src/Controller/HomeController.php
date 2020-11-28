@@ -50,6 +50,7 @@ class HomeController extends AbstractController
         }
         $manager->flush();
 
+        $this->addFlash('success', 'Le diagnostique a bien été effectué.');
         // Se rediriger vers notre route "home"
         return $this->redirectToRoute('home');
     }
