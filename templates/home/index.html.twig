@@ -21,16 +21,7 @@
             <h3>Votre site de monitoring en ligne</h3>
         </div>
 
-        <div class="d-flex justify-content-around">
-            <a class="btn btn-info" href="{{ path('analyze') }}">
-                <i class="fas fa-tools"></i>
-                Lancer le diagnostic
-            </a>
-            <a class="btn btn-warning" href="{{ path('clean') }}">
-                <i class="fas fa-sync-alt"></i>
-                Nettoyer l'historique
-            </a>
-        </div>
+
 
         <div class="conteneur my-5">
             {% for currentStatus in status %}

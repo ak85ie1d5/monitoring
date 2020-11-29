@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="my-5 text-center">Dashboard Admin</h1>
+
+        <div class="d-flex justify-content-around my-5">
+            <a class="btn btn-info" href="{{ path('analyze') }}">
+                <i class="fas fa-tools"></i>
+                Lancer le diagnostic
+            </a>
+            <a class="btn btn-warning" href="{{ path('clean') }}">
+                <i class="fas fa-sync-alt"></i>
+                Nettoyer l'historique
+            </a>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">URL</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for website in websites %}
+                    <tr>
+                        <th scope="row">{{ website.id }}</th>
+                        <td>{{ website.name }}</td>
+                        <td>{{ website.url }}</td>
+                        <td>@mdo</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+{% endblock %}
