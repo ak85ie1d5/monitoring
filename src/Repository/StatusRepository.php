@@ -20,7 +20,7 @@ class StatusRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Status[] Returns an array of Status objects
+    //  * @return Status[] Returns an array of latest Status objects.
     //  */
     public function getLastStatus($value)
     {
@@ -32,6 +32,18 @@ class StatusRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * Remove all content of the *monitoring.status* table.
+     *
+     * @return int|mixed|string
+     */
+    public function cleanStatusHistory()
+    {
+        return $this->createQueryBuilder('s')
+            ->delete()
+            ->getQuery()
+            ->getResult();
+    }
 
     /*
     public function findOneBySomeField($value): ?Status

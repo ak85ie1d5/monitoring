@@ -29,6 +29,20 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @Route("/website/clean", name="clean")
+     */
+    public function clean(StatusRepository $statusRepository)
+    {
+        // Supprimer tous nos status
+        $statusRepository->cleanStatusHistory();
+
+        $this->addFlash('warning', 'L\'historique des status a bien été effacé');
+        // Redirection vers la HP
+        return $this->redirectToRoute('home');
+
+    }
+
+    /**
      * @Route("/websites/analyze", name="analyze")
      */
     public function analyze(WebsiteRepository $repository, EntityManagerInterface $manager)
