@@ -36,7 +36,12 @@
                         <th scope="row">{{ website.id }}</th>
                         <td>{{ website.name }}</td>
                         <td>{{ website.url }}</td>
-                        <td>@mdo</td>
+                        <td>
+                            <a href="{{ path('admin_remove', {'id': website.id}) }}" class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Supprimer
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

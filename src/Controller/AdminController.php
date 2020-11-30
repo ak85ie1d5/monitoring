@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin", name="admin_dashboard")
      */
     public function index(WebsiteRepository $websiteRepository): Response
     {
@@ -37,11 +37,26 @@ class AdminController extends AbstractController
             $manager->persist($website);
             $manager->flush();
             $this->addFlash('success', 'Site web ajouté avec succès');
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('admin_dashboard');
         }
 
         return $this->render('admin/new.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/admin/{id}/remove", name="admin_remove")
+     * @param EntityManagerInterface $entityManager
+     * @param Website $website
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function remove(EntityManagerInterface $entityManager, Website $website)
+    {
+        $entityManager->remove($website);
+        $entityManager->flush();
+        $this->addFlash('warning', 'Site web supprimé avec succès');
+
+        return $this->redirectToRoute('admin_dashboard');
     }
 }
