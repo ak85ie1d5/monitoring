@@ -41,6 +41,10 @@
                                 <i class="fas fa-trash"></i>
                                 Supprimer
                             </a>
+                            <a href="{{ path('admin_edit', {'id': website.id}) }}" class="btn btn-info">
+                                <i class="fas fa-edit"></i>
+                                Éditer
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}
