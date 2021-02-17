@@ -5,10 +5,25 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         users_in_memory: { memory: null }
+        auth:
+            entity:
+                class: App\Entity\Admin
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        admin:
+            pattern: ^/admin
+            anonymous: true
+            provider: auth
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: admin_dashboard
+            logout:
+                path: logout
+                target: login
         main:
             anonymous: true
             provider: users_in_memory
