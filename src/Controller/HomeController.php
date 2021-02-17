@@ -13,6 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    private $mailer;
+
+    public function __construct(\Swift_Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+
     /**
      * @Route("/", name="home")
      */
@@ -65,6 +72,18 @@ class HomeController extends AbstractController
                 ->setReportedAt(new \DateTime())
                 ->setWebsite($site);
             $manager->persist($status);
+
+            // envoi d'un email si le statu est égale à 0
+            if ($status->getCode() === 0) {
+                $message = (new \Swift_Message('Server Monitor'))
+                    ->setFrom('info@monitoring.com')
+                    ->setTo('contact@monitoring.com')
+                    ->setBody(
+                        $this->renderView('admin/email.html.twig', compact('status', 'site')), 'text/html'
+                    );
+
+                $this->mailer->send($message);
+            }
         }
         $manager->flush();
 
