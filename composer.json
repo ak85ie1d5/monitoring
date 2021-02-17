@@ -16,6 +16,7 @@
         "symfony/form": "4.3.*",
         "symfony/framework-bundle": "4.3.*",
         "symfony/maker-bundle": "^1.24",
+        "symfony/security-bundle": "4.3.*",
         "symfony/twig-bundle": "4.3.*",
         "symfony/validator": "4.3.*",
         "symfony/yaml": "4.3.*",
