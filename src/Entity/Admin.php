@@ -73,7 +73,7 @@ class Admin implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_ASMIN'];
+        return ['ROLE_ADMIN'];
     }
 
     /**
