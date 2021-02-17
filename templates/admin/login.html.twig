@@ -18,7 +18,13 @@
                                     <div class="form-group">
                                         <input class="form-control" type="password" placeholder="password" name="_password" />
                                     </div>
-                                    <input class="btn btn-lg btn-success" type="submit" value="Connexion" />
+                                    <button class="btn btn-lg btn-success">
+                                        <i class="fas fa-unlock-alt"></i>
+                                        Me connecter
+                                    </button>
+                                    {% if error %}
+                                        <div class="alert alert-warning mt-2">Login failed !</div>
+                                    {% endif %}
                                 </fieldset>
                             </form>
                         </div>

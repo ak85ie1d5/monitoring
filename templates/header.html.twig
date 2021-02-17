@@ -8,14 +8,22 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active">
-                <a href="#">Dashboard admin</a>
+                <a href="{{ path('admin_dashboard') }}">Dashboard admin</a>
             </li>
         </ul>
-        <ul class="nav navbar-nav">
-            <li class="active">
-                <a href="#">Connexion</a>
-            </li>
-        </ul>
+        {% if app.user %}
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{{ path('logout') }}">Déconnexion</a>
+                </li>
+            </ul>
+        {% else %}
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{{ path('login') }}">Connexion</a>
+                </li>
+            </ul>
+        {% endif %}
     </div>
 </nav>
 
