@@ -14,10 +14,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     private $mailer;
+    private $colors;
 
     public function __construct(\Swift_Mailer $mailer)
     {
         $this->mailer = $mailer;
+        $this->colors = array(
+            '0' => 'danger',
+            '200' => 'success',
+            '301' => 'info',
+            '302' => 'info'
+        );
     }
 
     /**
@@ -26,12 +33,15 @@ class HomeController extends AbstractController
     public function index(WebsiteRepository $websiteRepository, StatusRepository $statusRepository): Response
     {
         $websites = $websiteRepository->findAll();
+        $ipAddress = $websiteRepository->findIp();
         $count = count($websites);
         $status = $statusRepository->getLastStatus($count);
 
         return $this->render('home/index.html.twig', [
             'websites' => $websites,
-            'status' => $status
+            'ipAddress' => $ipAddress,
+            'status' => $status,
+            'colors' => $this->colors
         ]);
     }
 

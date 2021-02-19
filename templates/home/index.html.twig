@@ -3,47 +3,32 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-    <style>
-        .element {
-            width: 33%;
-        }
-
-        .conteneur {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-    </style>
-
-    <div class="container">
-        <div class="head text-center my-5">
-            <h1>Accueil</h1>
-            <h3>Votre site de monitoring en ligne</h3>
-        </div>
-
-
-
-        <div class="conteneur my-5">
-            {% for currentStatus in status %}
-                <div class="element px-3">
-                    <div class="card bg-success text-white mb-3 website-card">
-                        <div class="card-header website-card-title">
-                            <h4>{{ currentStatus.website.name }}</h4>
-                            <small>
-                                {{ currentStatus.website.url }} ({{ currentStatus.website.ipAddress }})
-                            </small>
-                        </div>
-                        <div class="card-body">
-                            <div class="website-card-code">
-                                HTTP: {{ currentStatus.code }}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto py-3">
+                {% spaceless %}
+                    {% for ip in ipAddress %}
+                        <div class="border border-dark d-inline-block mr-3">
+                            <div class="bg-dark text-white pl-1">{{ ip|first }}</div>
+                            <div class="domaine row p-3">
+                                {% for currentStatus in status %}
+                                    {% if currentStatus.website.ipAddress == ip|first %}
+                                        <div class="col-auto text-center text-{{ colors[currentStatus.code] }}">
+                                            <div class="fas fa-desktop fa-4x"></div>
+                                            <a class="d-block text-secondary" href="{{ currentStatus.website.url }}" title="{{ currentStatus.website.name }}" target="_blank">
+                                                {{ currentStatus.website.name }}
+                                                <small class="fas fa-external-link-alt"></small>
+                                            </a>
+                                            <div>HTTP code: {{ currentStatus.code }}</div>
+                                            <a class="text-secondary" href="{{ path('website_show', {'id': currentStatus.website.id}) }}" title="View status history">View details</a>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <a href="{{ path('website_show', {'id': currentStatus.website.id}) }}" class="btn btn-lg btn-white">Voir la fiche</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+                    {% endfor %}
+                {% endspaceless %}
+            </div>
         </div>
     </div>
 {% endblock %}

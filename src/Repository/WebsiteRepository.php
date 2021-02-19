@@ -19,6 +19,15 @@ class WebsiteRepository extends ServiceEntityRepository
         parent::__construct($registry, Website::class);
     }
 
+    public function findIp()
+    {
+        return $this->createQueryBuilder('w')
+            ->select('w.ipAddress')
+            ->groupBy('w.ipAddress')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Website[] Returns an array of Website objects
     //  */

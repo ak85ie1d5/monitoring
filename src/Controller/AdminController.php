@@ -42,7 +42,7 @@ class AdminController extends AbstractController
     {
         $websites = $websiteRepository->findAll();
         return $this->render('admin/index.html.twig', [
-            'websites' => $websites
+            'websites' => $websites,
         ]);
     }
 
