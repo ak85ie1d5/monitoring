@@ -15,6 +15,12 @@ class WebsiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('ipAddress', TextType::class, [
+                'label' => 'IP Address',
+                'attr' => [
+                    'placeholder' => 'Entrer l\'adresse IP du serveur'
+                ]
+            ])
             ->add('url', TextType::class, [
                 'label' => 'URL du site web',
                 'attr' => [

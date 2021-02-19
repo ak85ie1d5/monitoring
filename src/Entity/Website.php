@@ -44,6 +44,11 @@ class Website
      */
     private $statuses;
 
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private $ipAddress;
+
     public function __construct()
     {
         $this->statuses = new ArrayCollection();
@@ -74,6 +79,18 @@ class Website
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getIpAddress(): ?string
+    {
+        return $this->ipAddress;
+    }
+
+    public function setIpAddress(string $ipAddress): self
+    {
+        $this->ipAddress = $ipAddress;
 
         return $this;
     }
