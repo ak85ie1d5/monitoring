@@ -45,6 +45,10 @@
                                 <i class="fas fa-edit"></i>
                                 Éditer
                             </a>
+                            <a href="{{ path('website_show', {'id': website.id}) }}" class="btn btn-info">
+                                <i class="fas fa-eye"></i>
+                                View details
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}
