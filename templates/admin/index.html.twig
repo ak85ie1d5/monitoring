@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="my-5 text-center">Dashboard Admin</h1>
+
+        <div class="d-flex justify-content-around my-5">
+            <a class="btn btn-info" href="{{ path('analyze') }}">
+                <i class="fas fa-tools"></i>
+                Lancer le diagnostic
+            </a>
+            <a class="btn btn-success" href="{{ path('admin_new') }}">
+                <i class="fas fa-plus"></i>
+                Ajouter une site
+            </a>
+            <a class="btn btn-warning" href="{{ path('clean') }}">
+                <i class="fas fa-sync-alt"></i>
+                Nettoyer l'historique
+            </a>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">URL</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for website in websites %}
+                    <tr>
+                        <th scope="row">{{ website.id }}</th>
+                        <td>{{ website.name }}</td>
+                        <td>{{ website.url }}</td>
+                        <td>
+                            <a href="{{ path('admin_remove', {'id': website.id}) }}" class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Supprimer
+                            </a>
+                            <a href="{{ path('admin_edit', {'id': website.id}) }}" class="btn btn-info">
+                                <i class="fas fa-edit"></i>
+                                Éditer
+                            </a>
+                            <a href="{{ path('website_show', {'id': website.id}) }}" class="btn btn-info">
+                                <i class="fas fa-eye"></i>
+                                View details
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+{% endblock %}

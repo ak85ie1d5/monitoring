@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto py-3">
+                {% apply spaceless %}
+                    {% for ip in ipAddress %}
+                        <div class="border border-dark d-inline-block mr-3">
+                            <div class="bg-dark text-white pl-1">{{ ip|first }}</div>
+                            <div class="domaine row p-3">
+                                {% for currentStatus in status %}
+                                    {% if currentStatus.website.ipAddress == ip|first %}
+                                        <div class="col-auto text-center text-{{ colors[currentStatus.code] }}">
+                                            <div class="fas fa-desktop fa-4x"></div>
+                                            <a class="d-block text-secondary" href="{{ currentStatus.website.url }}" title="{{ currentStatus.website.name }}" target="_blank">
+                                                {{ currentStatus.website.name }}
+                                                <small class="fas fa-external-link-alt"></small>
+                                            </a>
+                                            <div>HTTP code: {{ currentStatus.code }}</div>
+                                            <a class="text-secondary" href="{{ path('website_show', {'id': currentStatus.website.id}) }}" title="View status history">View details</a>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endapply %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
