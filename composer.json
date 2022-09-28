@@ -1,4 +1,6 @@
 {
+    "name": "jspaeth/monitoring",
+    "description": "",
     "type": "project",
     "license": "proprietary",
     "require": {
